@@ -13,6 +13,7 @@ module.exports = React.createClass({
       React.PropTypes.element,
     ]),
     show: React.PropTypes.bool,
+    tooltipStyles: React.PropTypes.object
   },
 
   render() {
@@ -22,12 +23,11 @@ module.exports = React.createClass({
       position: 'fixed',
       top: props.y,
       left: props.x,
-      display,
-      opacity: 0.8,
+      display
     };
 
     // TODO: add 'right: 0px' style when tooltip is off the chart
-    const tooltipStyles = {
+    const defaultTooltipStyles = {
       position: 'absolute',
       backgroundColor: 'white',
       border: '1px solid',
@@ -38,6 +38,9 @@ module.exports = React.createClass({
       marginRight: '10px',
       marginTop: '-15px',
     };
+
+    const tooltipStyles = (props.tooltipStyles !== undefined) ? props.tooltipStyles : defaultTooltipStyles;
+
     return (
       <div style={containerStyles}>
         <div style={tooltipStyles}>
