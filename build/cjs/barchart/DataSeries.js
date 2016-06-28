@@ -43,13 +43,15 @@ module.exports = React.createClass({
     var xScale = _props2.xScale;
     var yScale = _props2.yScale;
 
-    var barHeight = Math.abs(yScale(0) - yScale(segment.y));
+    var lowLimit = 1 - yScale(segment.y) / yScale(0) < .01;
+    var minHeight = lowLimit ? yScale(0) * .01 : 0;
+    var barHeight = Math.abs(yScale(0) - yScale(segment.y)) + minHeight;
     var y = yScale(segment.y0 + segment.y);
     return React.createElement(BarContainer, {
       height: barHeight,
       width: xScale.rangeBand(),
       x: xScale(segment.x),
-      y: segment.y >= 0 ? y : y - barHeight,
+      y: segment.y >= 0 ? y - minHeight : y - barHeight,
       fill: colors(colorAccessor(segment, seriesIdx)),
       hoverAnimation: hoverAnimation,
       onMouseOver: this.props.onMouseOver,
