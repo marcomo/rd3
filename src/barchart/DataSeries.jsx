@@ -31,14 +31,16 @@ module.exports = React.createClass({
 
   _renderBarContainer(segment, seriesIdx) {
     const { colors, colorAccessor, hoverAnimation, xScale, yScale } = this.props;
-    const barHeight = Math.abs(yScale(0) - yScale(segment.y));
+    const lowLimit = (1 - yScale(segment.y) / yScale(0)) < .01;
+    const minHeight = lowLimit ? yScale(0) * .01 : 0;
+    const barHeight = Math.abs(yScale(0) - yScale(segment.y))  + minHeight;
     const y = yScale(segment.y0 + segment.y);
     return (
       <BarContainer
         height={barHeight}
         width={xScale.rangeBand()}
         x={xScale(segment.x)}
-        y={(segment.y >= 0) ? y : y - barHeight}
+        y={(segment.y >= 0) ? y - minHeight : y - barHeight}
         fill={colors(colorAccessor(segment, seriesIdx))}
         hoverAnimation={hoverAnimation}
         onMouseOver={this.props.onMouseOver}
