@@ -1,6 +1,6 @@
 {
   "name": "vadio-rd3",
-  "version": "0.6.3",
+  "version": "0.6.5",
   "description": "Vadio fork of rd3: ReactJS charts using d3",
   "author": "Marco Morales",
   "homepage": "https://github.com/marcomo/rd3/tree/adb",
