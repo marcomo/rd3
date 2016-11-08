@@ -1,3 +1,15 @@
+#####0.7.2
+ - y0 accessor for Bar Chart [#82](https://github.com/yang-wei/rd3/pull/8)
+
+#####0.7.0
+ - Axis tick color for all charts #38
+ - Add `grouped` prop to BarChart #68
+ - Fix error when `data` prop is empty array #60
+ - Make travis run on pull request
+
+####0.5.6
+ - YAxis not rendered bug
+
 ####0.4.0:
 - Stacked bar chart 
 - Support grid (Thanks @nightlyop)

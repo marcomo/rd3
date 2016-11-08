@@ -25,7 +25,8 @@ module.exports = React.createClass({
     margins: React.PropTypes.object,
     interpolate: React.PropTypes.bool,
     interpolationType: React.PropTypes.string,
-    hoverAnimation: React.PropTypes.bool
+    hoverAnimation: React.PropTypes.bool,
+    data: React.PropTypes.array.isRequired
   },
 
   mixins: [CartesianChartPropsMixin, DefaultAccessorsMixin, ViewBoxMixin],
@@ -37,7 +38,8 @@ module.exports = React.createClass({
       interpolate: false,
       interpolationType: null,
       className: 'rd3-areachart',
-      hoverAnimation: true
+      hoverAnimation: true,
+      data: []
     };
   },
   render: function render() {
@@ -56,6 +58,9 @@ module.exports = React.createClass({
 
     if (!Array.isArray(data)) {
       data = [data];
+    }
+    if (this.props.data && this.props.data.length < 1) {
+      return null;
     }
 
     var yScale = d3.scale.linear().range([innerHeight, 0]);
@@ -143,6 +148,8 @@ module.exports = React.createClass({
           xAxisLabel: props.xAxisLabel,
           xAxisLabelOffset: props.xAxisLabelOffset,
           tickFormatting: props.xAxisFormatter,
+          tickStroke: props.xAxisTickStroke,
+          tickTextStroke: props.xAxisTickTextStroke,
           xOrient: props.xOrient,
           yOrient: yOrient,
           margins: svgMargins,
@@ -163,6 +170,8 @@ module.exports = React.createClass({
           yAxisLabel: props.yAxisLabel,
           yAxisLabelOffset: props.yAxisLabelOffset,
           tickFormatting: props.yAxisFormatter,
+          tickStroke: props.yAxisTickStroke,
+          tickTextStroke: props.yAxisTickTextStroke,
           xOrient: props.xOrient,
           yOrient: yOrient,
           margins: svgMargins,

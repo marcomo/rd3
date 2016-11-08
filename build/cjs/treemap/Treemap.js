@@ -39,6 +39,9 @@ module.exports = React.createClass({
   },
   render: function render() {
     var props = this.props;
+    if (this.props.data && this.props.data.length < 1) {
+      return null;
+    }
 
     return React.createElement(
       Chart,

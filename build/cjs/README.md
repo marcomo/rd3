@@ -1,3 +1,7 @@
+## Future of rd3 
+Currently I don't have time to manage this library anymore so if someone is willing to maintain I would like to transfer this repository. Please see https://github.com/yang-wei/rd3/issues/88
+Let us discuss where will this library heading.
+
 ## [rd3](https://github.com/yang-wei/rd3) (forked from [react-d3](https://github.com/esbullington/react-d3))
 Modular ReactJS charts made using d3 chart utilities.
 
@@ -13,8 +17,24 @@ Thanks to [npmcdn](https://npmcdn.com/) you can now try out rd3 quickly:
  * https://npmcdn.com/rd3/build/public/js/react-d3.js
  * https://npmcdn.com/rd3/build/public/js/react-d3.min.js
 
+Note: rd3 depends on react and d3, you will need to include those scripts if you aren't yet.
+
+ * https://npmcdn.com/react/dist/react.min.js
+ * https://npmcdn.com/react-dom/dist/react-dom.min.js
+ * https://npmcdn.com/d3
+
+You can refer to [fiddle example](https://yang-wei.github.io/rd3/docs/new/charts/areaChart.html) too.
+
 ### NPM
 Or via `npm`:
+
+If you havn't installed `react` and `d3` then:
+
+```
+npm install react react-dom
+// currently we do not support d3@v4.0
+npm install d3@v3.5.17
+```
 
 ```
 npm install rd3
