@@ -100,6 +100,8 @@ module.exports = React.createClass({
               stroke={props.axesColor}
               strokeWidth={props.xAxisStrokeWidth.toString()}
               tickFormatting={props.xAxisFormatter}
+              tickStroke={props.xAxisTickStroke}
+              tickTextStroke={props.xAxisTickTextStroke}
               width={innerWidth}
               xAxisClassName={props.xAxisClassName}
               xAxisLabel={props.xAxisLabel}
@@ -124,6 +126,8 @@ module.exports = React.createClass({
               stroke={props.axesColor}
               strokeWidth={props.yAxisStrokeWidth.toString()}
               tickFormatting={props.yAxisFormatter}
+              tickStroke={props.yAxisTickStroke}
+              tickTextStroke={props.yAxisTickTextStroke}
               yAxisClassName={props.yAxisClassName}
               yAxisLabel={props.yAxisLabel}
               yAxisLabelOffset={props.yAxisLabelOffset}
@@ -146,9 +150,9 @@ module.exports = React.createClass({
               height={innerHeight}
               hoverAnimation={props.hoverAnimation}
               width={innerWidth}
-              xAccessor={props.xAccessor}
+              xAccessor={(coord) => coord.x}
               xScale={xScale}
-              yAccessor={props.yAccessor}
+              yAccessor={(coord) => coord.y}
               yScale={yScale}
               onMouseOver={this.onMouseOver}
             />
